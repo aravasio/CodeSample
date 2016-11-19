@@ -19,6 +19,10 @@ class RequestManager {
         }
         
         let token = AppToken.sharedInstance.getToken()
+        //TODO: Actually use username/password parameters instead of the Const-Dev ones.
+        
+        
+//        let postData: JSON = ["username": username, "password": password, "appToken": token]
         let postData: JSON = ["username": Endpoint.devUser, "password": Endpoint.devPass, "appToken": token]
         rest.post(postData, at: "post") { result, httpResponse in
             print(result)

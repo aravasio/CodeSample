@@ -16,7 +16,7 @@ struct Endpoint {
     
     // MARK: AccountServices
     struct AccountServices {
-        static let baseURL = "http://some.url.com/services/"
+        static let baseURL = "https://some.url.com/services/"
         
         static let getAppToken = "/GetToken"
         static let login = "/Login"
