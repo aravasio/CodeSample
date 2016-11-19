@@ -70,6 +70,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
+    // MARK: Actions
     @IBAction func showPasswordPressed(_ sender: UIButton) {
         passwordField.isSecureTextEntry = false
     }
@@ -112,18 +113,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         login.make(onSucess: {
             //TODO: Implement MainVC.
             //TODO: Take me there.
-            OperationQueue.main.addOperation {
-                let alert = UIAlertController(title: "Success!", message: "You logged in!", preferredStyle: .alert)
-                self.present(alert, animated: true, completion: nil)
-            }
+            self.showAlert(title: "Success!", message: "You logged in!")
+            
         }, onFailure: {
             //TODO: Gracefully handle the login-error. Probably a small text message "usr/pwd wrong" or similar.
-            OperationQueue.main.addOperation {
-                let alert = UIAlertController(title: "Failed! :(", message: "Something went wrong...", preferredStyle: .alert)
-                self.present(alert, animated: true, completion: nil)
-            }
+            self.showAlert(title: "It failed. :(", message: "Something went wrong...")
         })
-        
+    }
+    
+    private func showAlert(title: String, message: String) {
+        OperationQueue.main.addOperation {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            self.present(alert, animated: true, completion: nil)
+
+            //dismiss alert 3 seconds from now.
+            let when = DispatchTime.now() + 3
+            DispatchQueue.main.asyncAfter(deadline: when){
+                alert.dismiss(animated: true, completion: nil)
+            }
+
+        }
     }
     
     // MARK: Delegate methods
@@ -149,7 +158,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         return true
     }
-    
     
     // MARK: Helper Functions
     // TODO: This would probably be better off as an String extension instead of a VC Method. Way more useful/reusable that way.
