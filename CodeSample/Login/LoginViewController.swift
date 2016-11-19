@@ -63,7 +63,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setLoginButton() {
-        loginButton.titleLabel?.text = "Login"
+        loginButton.setTitle("Login", for: .normal)
+        loginButton.setTitle("Login", for: UIControlState.highlighted)
     }
     
     @objc private func dismissKeyboard() {
