@@ -37,6 +37,8 @@ class RequestManager {
         }
     }
     
+    
+    //TODO: Replace onCompletion for onSuccess and onError closures...
     static func requestAppToken( onCompletion: @escaping ((String) -> Void) ) {
         
         if let rest = RestController.make(urlString: Endpoint.AccountServices.baseURL + Endpoint.AccountServices.getAppToken) {

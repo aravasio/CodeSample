@@ -40,8 +40,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private func setTitle() {
         titleLabel.font = UIFont(name: "HelveticaNeue", size: 25)
         titleLabel.textColor = UIColor.white
-        let stringToBold = NSMutableAttributedString.init(string: "Puertos / Escobar")
-        titleLabel.attributedText = boldSubstring(fromString: stringToBold, withStrings: "Puertos")
+        let stringToBold = NSMutableAttributedString.init(string: "Simple App")
+        titleLabel.attributedText = boldSubstring(fromString: stringToBold, withStrings: "App")
     }
     
     private func setContainerView() {
@@ -152,6 +152,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     // MARK: Helper Functions
+    // TODO: This would probably be better off as an String extension instead of a VC Method. Way more useful/reusable that way.
     private func boldSubstring(fromString: NSMutableAttributedString, withStrings wordsToBold: String) -> NSMutableAttributedString {
         let font = UIFont(name: "HelveticaNeue-Bold", size: 25)
         
